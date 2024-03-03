@@ -15,19 +15,19 @@ namespace Teste_NetCore_API.App.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var bookings = _bookingDomainService.GetAll();
-            return Ok(bookings); 
+            var bookings = await _bookingDomainService.GetAllAsync();
+            return Ok(bookings);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var booking = _bookingDomainService.GetById(id);
+            var booking = await _bookingDomainService.GetByIdAsync(id);
             if (booking == null)
             {
-                return NotFound("Booking not found"); 
+                return NotFound("Booking not found");
             }
             return Ok(booking);
         }

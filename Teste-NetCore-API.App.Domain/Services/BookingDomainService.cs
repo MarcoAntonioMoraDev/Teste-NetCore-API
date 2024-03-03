@@ -13,14 +13,15 @@ namespace Teste_NetCore_API.App.Domain.Services
             _mockbookingRepository = mockbookingRepository;
         }
 
-        public List<Booking> GetAll()
+        public async Task<List<Booking>> GetAllAsync()
         {
-            return _mockbookingRepository.GetAll();
+            return await _mockbookingRepository.GetAllAsync();
         }
 
-        public Booking GetById(int id)
+        public async Task<Booking> GetByIdAsync(int id)
         {
-            return _mockbookingRepository.GetAll().FirstOrDefault(b => b.BookingId == id);
+            var bookings = await _mockbookingRepository.GetAllAsync();
+            return bookings.FirstOrDefault(b => b.BookingId == id);
         }
     }
 }

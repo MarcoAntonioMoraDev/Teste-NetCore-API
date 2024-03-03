@@ -4,6 +4,7 @@ namespace Teste_NetCore_API.App.Domain.Interfaces.Repositories
 {
     public interface IMockBookingRepository
     {
-        List<Booking> GetAll();
+        Task<List<Booking>> GetAllAsync();
+        Task<Booking> GetByIdAsync(int id);
     }
 }

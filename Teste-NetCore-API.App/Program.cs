@@ -32,4 +32,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseCors("DefaultPolicy");
 app.MapControllers();
-app.Run();
+
+await app.RunAsync();
